@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% if logged_in? %>
+    <h1>Welcome, <%=current_user.username%>!</h1>
+
+
+    <% else %>
+
+    <p>
+      Sorry, something went wrong! Please <a href="/login"><strong>log in</strong></a> or <a href="/signup"><strong>sign up</strong></a> to view this page.
+    </p>
+
+    <% end %>
+
+
+  </body>
+</html>
