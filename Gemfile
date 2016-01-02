@@ -1,7 +1,17 @@
 source "https://rubygems.org"
 
-gem 'sinatra', require 'sinatra/base'
-
-gem 'pry'
+gem 'sinatra'
+gem 'activerecord', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3'
+gem 'thin'
 gem 'shotgun'
-gem 'rackup'
+gem "bcrypt"
+gem 'pry'
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+end
