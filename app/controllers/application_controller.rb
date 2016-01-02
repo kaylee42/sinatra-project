@@ -1,6 +1,11 @@
-class ApplicationController < Sinatra::base
+class ApplicationController < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
   enable :method_override
-  set :root, File.join(__dir__, "..")
+  configure do
+    set :views, "app/views"
+    enable :sessions
+    set :session_secret, "password_security"
+  end
 
 
 get '/' do
