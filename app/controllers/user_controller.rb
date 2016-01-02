@@ -7,7 +7,7 @@ class UserController < ApplicationController
 
   post '/signup' do
     user = User.new(params[:user])
-    if user.save 
+    if user.save
       session[:user_id] = user.id
       redirect to '/account'
     else
@@ -35,6 +35,11 @@ class UserController < ApplicationController
     else
       redirect to '/failure'
     end
+  end
+
+  post '/logout' do
+    session.clear
+    redirect to '/'
   end
 
 end
