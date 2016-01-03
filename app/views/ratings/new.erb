@@ -30,7 +30,14 @@
         <% Author.all.each do |author| %>
         <option value="<%=author.name%>" />
           <% end %>
-        </datalist><br><br>
+        </datalist><br>
+        <label for="genre">Genre (if new):</label>
+        <input type="text" name="genre[name]" value="" id="genre" list="genres">
+        <datalist id="genres">
+        <% Genre.all.each do |genre| %>
+        <option value="<%=genre.name%>" />
+          <% end %>
+        </datalist><br>
       Rating: <select class="" name="rating[amount]">
         <% [1,2,3,4,5,6,7,8,9,10].each do |num| %>
         <option value="<%=num%>"><%=num%></option>

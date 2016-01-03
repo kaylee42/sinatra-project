@@ -12,7 +12,8 @@ class RatingsController < ApplicationController
       redirect to '/account'
     else
       author = Author.find_or_create_by(params[:author])
-      book = Book.new(name: params[:book][:name], author_id: author.id)
+      genre = Genre.find_or_create_by(params[:genre])
+      book = Book.new(name: params[:book][:name], author_id: author.id, genre_id: genre.id)
       if author && book.save
         Rating.create(amount: params[:rating][:amount], book_id: book.id, user_id: session[:user_id])
         redirect to '/account'
@@ -35,7 +36,7 @@ class RatingsController < ApplicationController
   post '/rating/edit' do
     rating = Rating.find(params[:rating_id])
     rating.update(params[:rating])
-    redirect to '/account'
+    redirect to "/book/#{rating.book.id}"
   end
 
   post '/rating/delete' do
