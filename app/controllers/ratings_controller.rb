@@ -35,7 +35,10 @@ class RatingsController < ApplicationController
 
   post '/rating/edit' do
     rating = Rating.find(params[:rating_id])
-    rating.update(params[:rating])
+    author = Author.find_or_create_by(params[:author])
+    genre = Genre.find_or_create_by(params[:genre])
+    book = Book.find_or_create_by(name: params[:book][:name], author_id: author.id, genre_id: genre.id)
+    rating.update(amount: params[:rating][:amount], book_id: book.id)
     redirect to "/book/#{rating.book.id}"
   end
 

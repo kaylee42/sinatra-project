@@ -18,14 +18,14 @@
     <form class="" action="/rate" method="post">
       Pick a book from the pre-existing list or add a new one! <br>
       <label for="book">Book:</label>
-      <input type="text" name="book[name]" value="" id="book" list="books">
+      <input type="text" name="book[name]" size="35" value="" id="book" list="books">
         <datalist id="books">
         <% Book.all.each do |book| %>
         <option value="<%=book.name%> - <%=book.author.name%> - <%=book.id%>" />
           <% end %>
         </datalist><br>
         <label for="author">Author (if new):</label>
-        <input type="text" name="author[name]" value="" id="author" list="authors">
+        <input type="text" name="author[name]" size="35" value="" id="author" list="authors">
         <datalist id="authors">
         <% Author.all.each do |author| %>
         <option value="<%=author.name%>" />

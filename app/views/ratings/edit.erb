@@ -6,10 +6,29 @@
   </head>
   <body>
     <h2><%= @rating.book.name %> </h2>
-      Author: <%= @rating.book.author.name %> <br>
-      Genre: <%= @rating.book.genre.name if @rating.book.genre%> <br>
+          <form class="" action="/rating/edit" method="post">
+    <label for="book">Book:</label>
+    <input type="text" name="book[name]" size="35" value="<%=@rating.book.name%>" id="book" list="books">
+      <datalist id="books">
+      <% Book.all.each do |book| %>
+      <option value="<%=book.name%>" />
+        <% end %>
+      </datalist><br>
+      <label for="author">Author:</label>
+      <input type="text" name="author[name]" size="35" value="<%=@rating.book.author.name%>" id="author" list="authors">
+      <datalist id="authors">
+      <% Author.all.each do |author| %>
+      <option value="<%=author.name%>" />
+        <% end %>
+      </datalist><br>
+      <label for="genre">Genre:</label>
+      <input type="text" name="genre[name]" value="<%=@rating.book.genre.name%>" id="genre" list="genres">
+      <datalist id="genres">
+      <% Genre.all.each do |genre| %>
+      <option value="<%=genre.name%>" />
+        <% end %>
+      </datalist><br>
       Your Rating:
-      <form class="" action="/rating/edit" method="post">
         <input type="hidden" name="rating_id" value="<%=@rating.id%>">
         <select class="" name="rating[amount]">
           <% [1,2,3,4,5,6,7,8,9,10].each do |num| %>
