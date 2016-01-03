@@ -7,7 +7,7 @@
   <body>
     <h2><%= @rating.book.name %> </h2>
       Author: <%= @rating.book.author.name %> <br>
-      Genre: <%= @rating.book.genre.name %> <br>
+      Genre: <%= @rating.book.genre.name if @rating.book.genre%> <br>
       Your Rating:
       <form class="" action="/rating/edit" method="post">
         <input type="hidden" name="rating_id" value="<%=@rating.id%>">

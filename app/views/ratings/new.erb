@@ -25,7 +25,12 @@
           <% end %>
         </datalist><br>
         <label for="author">Author (if new):</label>
-        <input type="text" name="author[name]" value="" id="author"><br>
+        <input type="text" name="author[name]" value="" id="author" list="authors">
+        <datalist id="authors">
+        <% Author.all.each do |author| %>
+        <option value="<%=author.name%>" />
+          <% end %>
+        </datalist><br><br>
       Rating: <select class="" name="rating[amount]">
         <% [1,2,3,4,5,6,7,8,9,10].each do |num| %>
         <option value="<%=num%>"><%=num%></option>

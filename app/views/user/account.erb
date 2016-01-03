@@ -22,7 +22,7 @@
     <h3>Highest Rated:</h3>
     <ul>
       <%current_user.ratings.order('amount DESC, updated_at DESC').limit(10).each do |rating| %>
-      <li><em><%=rating.book.name%></em> by <%=rating.book.author.name%> - <strong><%=rating.amount%></strong></li>
+      <li><em><%=rating.book.name%></em> by <%=rating.book.author.name%> - <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
       <% end %>
     </ul>
 
