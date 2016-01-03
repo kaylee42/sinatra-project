@@ -7,6 +7,7 @@ class UserController < ApplicationController
 
   post '/signup' do
     user = User.new(params[:user])
+    # binding.pry
     if user.save
       session[:user_id] = user.id
       redirect to '/account'
@@ -30,7 +31,7 @@ class UserController < ApplicationController
   post '/login' do
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
-      session[:user_id] = user
+      session[:user_id] = user.id
       redirect to '/account'
     else
       redirect to '/failure'
@@ -41,5 +42,7 @@ class UserController < ApplicationController
     session.clear
     redirect to '/'
   end
+
+
 
 end

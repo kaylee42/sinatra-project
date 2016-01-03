@@ -8,6 +8,24 @@
     <% if logged_in? %>
     <h1>Welcome, <%=current_user.username%>!</h1>
 
+    <p>
+      Would you like to <a href="/rate">rate a new book</a>?
+    </p>
+
+    <h3>Recent Ratings:</h3>
+    <ul>
+      <%current_user.ratings.order('updated_at DESC').limit(5).each do |rating| %>
+      <li><em><%=rating.book.name%></em> by <%=rating.book.author.name%> - <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
+      <% end %>
+    </ul>
+
+    <h3>Highest Rated:</h3>
+    <ul>
+      <%current_user.ratings.order('amount DESC, updated_at DESC').limit(10).each do |rating| %>
+      <li><em><%=rating.book.name%></em> by <%=rating.book.author.name%> - <strong><%=rating.amount%></strong></li>
+      <% end %>
+    </ul>
+
     <form class="" action="/logout" method="post">
       <input type="submit" name="submit" value="Log Out">
     </form>

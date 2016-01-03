@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <% if @errors %>
+    Error! <br>
+     <% @errors.each do |k, error| %>
+
+    <%= error.join %><br>
+    <% end %>
+    <br>
+    <% end %>
+
+    <form class="" action="/rate" method="post">
+      Pick a book from the pre-existing list or add a new one! <br>
+      <label for="book">Book:</label>
+      <input type="text" name="book[name]" value="" id="book" list="books">
+        <datalist id="books">
+        <% Book.all.each do |book| %>
+        <option value="<%=book.name%> - <%=book.author.name%> - <%=book.id%>" />
+          <% end %>
+        </datalist><br>
+        <label for="author">Author (if new):</label>
+        <input type="text" name="author[name]" value="" id="author"><br>
+      Rating: <select class="" name="rating[amount]">
+        <% [1,2,3,4,5,6,7,8,9,10].each do |num| %>
+        <option value="<%=num%>"><%=num%></option>
+          <% end %>
+      </select><br>
+        <input type="submit" name="submit" value="Rate!">
+    </form>
+  </body>
+</html>
