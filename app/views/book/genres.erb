@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Genres:</h1>
+    <ul>
+      <% genres = Genre.all.sort_by {|genre| genre.name}%>
+      <% genres.each do |genre| %>
+      <li><a href="/genres/<%=genre.id%>"><%=genre.name%></a></li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>

@@ -11,4 +11,13 @@ get '/book/:id' do
   erb :"book/view"
 end
 
+get '/genres' do
+  erb :"book/genres"
+end
+
+get '/genres/:id' do
+  @genre = Genre.find(params[:id])
+  erb :"book/genre_view"
+end
+
 end
