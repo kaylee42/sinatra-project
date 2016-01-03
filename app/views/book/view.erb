@@ -9,5 +9,12 @@
     <h2>Author: <%= @book.author.name %></h2>
     <h3>Genre: <%= @book.genre.name if @book.genre %></h3>
     <h2>Average Rating: <%=Rating.where(book_id: @book.id).average(:amount).to_f.round(2)%></h2>
+
+    <% if logged_in? %>
+
+
+    <% else %>
+    <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to rate this book!
+    <% end %>
   </body>
 </html>

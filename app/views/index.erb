@@ -15,6 +15,14 @@
 <a href="/signup">Sign Up</a> or <a href="/login">Log In</a>
 <% end %>
 
+<h2>Top Rated:</h2>
+<ul>
+<% Rating.select("id, book_id, avg(amount) as average").group("book_id").order("average DESC").limit(10).each do |rating| %>
+
+<li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong>Rated <%=rating.average.round(2)%>/10</strong></li>
+
+<% end %>
+</ul>
 <h2>Recently Rated:</h2>
 <ul>
 <% Rating.all.order('updated_at DESC').limit(10).each do |rating| %>
