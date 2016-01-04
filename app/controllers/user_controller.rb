@@ -7,7 +7,6 @@ class UserController < ApplicationController
 
   post '/signup' do
     user = User.new(params[:user])
-    # binding.pry
     if user.save
       session[:user_id] = user.id
       redirect to '/account'
@@ -18,6 +17,15 @@ class UserController < ApplicationController
 
   get '/account' do
     erb :"user/account"
+  end
+
+  get '/user/:id' do
+    if params[:id] == session[:user_id]
+      redirect to '/account'
+    else
+      @user = User.find(params[:id])
+      erb :"user/friend"
+    end
   end
 
   get '/failure' do

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><%=@user.username%></h1>
+
+    <h3>Recent Ratings:</h3>
+    <ul>
+      <%@user.ratings.order('updated_at DESC').limit(5).each do |rating| %>
+      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong><%=rating.amount%></strong></li>
+      <% end %>
+    </ul>
+
+    <h3>Highest Rated:</h3>
+    <ul>
+      <%@user.ratings.order('amount DESC, updated_at DESC').limit(10).each do |rating| %>
+      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong><%=rating.amount%></strong></li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>

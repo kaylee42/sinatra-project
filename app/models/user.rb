@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :books, through: :ratings
   has_many :authors, through: :books
   has_many :genres, through: :books
+  has_many :friendships
+  has_many :friends, through: :friendships
 end

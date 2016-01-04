@@ -21,7 +21,7 @@
 <ul>
 <% Rating.all.order('updated_at DESC').limit(10).each do |rating| %>
 
-  <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong>Rated <%=rating.amount%></strong> by <%= rating.user.username%></li>
+  <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong>Rated <%=rating.amount%></strong> by <a href="/user/<%=rating.user.id%>"><%= rating.user.username%></a></li>
   <% end %>
 </ul>
 
