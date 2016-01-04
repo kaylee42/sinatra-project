@@ -15,14 +15,14 @@
     <h3>Recent Ratings:</h3>
     <ul>
       <%current_user.ratings.order('updated_at DESC').limit(5).each do |rating| %>
-      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
+      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <a href="/authors/<%=rating.book.author.id%>"><%=rating.book.author.name%></a> - <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
       <% end %>
     </ul>
 
     <h3>Highest Rated:</h3>
     <ul>
       <%current_user.ratings.order('amount DESC, updated_at DESC').limit(10).each do |rating| %>
-      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
+      <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <a href="/authors/<%=rating.book.author.id%>"><%=rating.book.author.name%> </a>- <strong><a href="/rating/<%=rating.id%>"><%=rating.amount%></a></strong></li>
       <% end %>
     </ul>
 

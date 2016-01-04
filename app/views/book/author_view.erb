@@ -11,7 +11,7 @@
     <% books = @author.books.sort_by {|book| -(Rating.where(book_id: book.id).average(:amount) || 0) } %>
     <ul>
     <% books.each do |book| %>
-      <li><a href="/book/<%=book.id%>"><em><%=book.name%></em></a> - <%=book.genre.name%> <strong>Rated: <%=Rating.where(book_id: book.id).average(:amount).to_f.round(2)%>/10</strong> </li>
+      <li><a href="/book/<%=book.id%>"><em><%=book.name%></em></a> - <a href="/genres/<%=book.genre.id%>"><%=book.genre.name%></a> <strong>Rated: <%=Rating.where(book_id: book.id).average(:amount).to_f.round(2)%>/10</strong> </li>
     <% end %>
     </ul>
   </body>

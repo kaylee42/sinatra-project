@@ -13,7 +13,7 @@
 <ul>
 <% Rating.select("id, book_id, avg(amount) as average").group("book_id").order("average DESC").limit(10).each do |rating| %>
 
-<li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong>Rated <%=rating.average.round(2)%>/10</strong></li>
+<li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <a href="/authors/<%=rating.book.author.id%>"><%=rating.book.author.name%></a> - <strong>Rated <%=rating.average.round(2)%>/10</strong></li>
 
 <% end %>
 </ul>
@@ -21,7 +21,7 @@
 <ul>
 <% Rating.all.order('updated_at DESC').limit(10).each do |rating| %>
 
-  <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <%=rating.book.author.name%> - <strong>Rated <%=rating.amount%></strong> by <a href="/user/<%=rating.user.id%>"><%= rating.user.username%></a></li>
+  <li><em><a href="/book/<%=rating.book.id%>"><%=rating.book.name%></a></em> by <a href="/authors/<%=rating.book.author.id%>"><%=rating.book.author.name%></a> - <strong>Rated <%=rating.amount%></strong> by <a href="/user/<%=rating.user.id%>"><%= rating.user.username%></a></li>
   <% end %>
 </ul>
 
