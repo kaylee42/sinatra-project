@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Authors:</h1>
+    <ul>
+      <% authors = Author.all.sort_by {|author| author.name}%>
+      <% authors.each do |author| %>
+      <li><a href="/authors/<%=author.id%>"><%=author.name%></a></li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>

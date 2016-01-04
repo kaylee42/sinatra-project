@@ -20,4 +20,14 @@ get '/genres/:id' do
   erb :"book/genre_view"
 end
 
+get '/authors' do
+  erb :"book/authors"
+end
+
+get '/authors/:id' do
+  @author = Author.find(params[:id])
+  erb :"book/author_view"
+end
+
+
 end
