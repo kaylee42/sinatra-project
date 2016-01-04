@@ -5,20 +5,22 @@
     <title></title>
   </head>
   <body>
+    <header>
 
-    <a href="/">Home</a>
-    Browse by:
-    <a href="/authors">Authors</a>
-    <a href="/genres">Genres</a>
-    <a href="/user">Users</a>
+
+    <a href="/">Home</a>&nbsp;&nbsp;&nbsp;
+    Browse by:&nbsp;
+    <a href="/authors">Authors</a>&nbsp;&nbsp;
+    <a href="/genres">Genres</a>&nbsp;&nbsp;
+    <a href="/user">Users</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if logged_in? %>
 
-    <a href="/account">Your Account</a>
+    <a href="/account">Your Account</a>&nbsp;&nbsp;&nbsp;
     <a href="/logout">Log Out</a>
     <% else %>
     <a href="/signup">Sign Up</a> or <a href="/login">Log In</a>
     <% end %>
-
+  </header>
 
 
     <%= yield %>
