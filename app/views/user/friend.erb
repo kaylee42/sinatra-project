@@ -7,6 +7,18 @@
   <body>
     <h1><%=@user.username%></h1>
 
+    <% if current_user.friends.include?(@user) %>
+    <form class="" action="/remove_friend" method="post">
+      <input type="hidden" name="friend[id]" value="<%=@user.id%>">
+      <input type="submit" name="name" value="Remove Friend">
+    </form>
+
+    <% else %>
+    <form class="" action="/add_friend" method="post">
+      <input type="hidden" name="friend[id]" value="<%=@user.id%>">
+      <input type="submit" name="name" value="Add Friend">
+    </form>
+    <% end %>
     <h3>Recent Ratings:</h3>
     <ul>
       <%@user.ratings.order('updated_at DESC').limit(5).each do |rating| %>

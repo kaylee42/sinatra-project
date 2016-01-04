@@ -28,6 +28,17 @@ class UserController < ApplicationController
     end
   end
 
+  post '/add_friend' do
+    Friendship.create(user_id: session[:user_id], friend_id: params[:friend][:id])
+    redirect to '/account'
+  end
+
+  post '/remove_friend' do
+    friend = Friendship.find_by(user_id: session[:user_id], friend_id: params[:friend][:id])
+    friend.destroy
+    redirect to '/account'
+  end
+
   get '/failure' do
     erb :"user/failure"
   end
