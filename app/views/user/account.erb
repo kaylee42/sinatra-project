@@ -26,9 +26,14 @@
       <% end %>
     </ul>
 
-    <form class="" action="/logout" method="post">
-      <input type="submit" name="submit" value="Log Out">
-    </form>
+    <h3>Friends:</h3>
+    <ul>
+      <% current_user.friends.each do |friend| %>
+        <li><a href="/user/<%=friend.id%>"><%=friend.username%></a></li>
+      <% end %>
+    </ul>
+
+
 
     <% else %>
 
