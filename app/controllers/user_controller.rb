@@ -11,7 +11,9 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect to '/account'
     else
-      redirect to '/failure'
+      @errors = user.errors.full_messages
+
+      erb :"user/signup"
     end
   end
 
@@ -20,7 +22,7 @@ class UserController < ApplicationController
   end
 
   get '/user/:id' do
-    if params[:id] == session[:user_id]
+    if params[:id].to_i == session[:user_id]
       redirect to '/account'
     else
       @user = User.find(params[:id])

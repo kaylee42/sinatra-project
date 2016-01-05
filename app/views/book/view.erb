@@ -6,8 +6,8 @@
   </head>
   <body>
     <h1><%= @book.name %></h1>
-    <h2>Author: <%= @book.author.name %></h2>
-    <h3>Genre: <%= @book.genre.name if @book.genre %></h3>
+    <h2>Author: <a href="/authors/<%=@book.author.id%>"><%= @book.author.name %></a></h2>
+    <h3>Genre: <a href="/genres/<%=@book.genre.id if @book.genre%>"><%= @book.genre.name if @book.genre %></a></h3>
     <h2>Average Rating: <%=Rating.where(book_id: @book.id).average(:amount).to_f.round(2)%></h2>
 
     <% if logged_in? %>
